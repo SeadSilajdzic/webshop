@@ -14,6 +14,11 @@ class Product extends Model
         return $this->hasMany(ProductVariant::class);
     }
 
+    public function image(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(Image::class)->ofMany('featured', 'max');
+    }
+
     public function images(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Image::class);
